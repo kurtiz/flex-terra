@@ -20,7 +20,7 @@ resource "aws_security_group" "flexcube_sg" {
     from_port   = 1521
     to_port     = 1521
     protocol    = "tcp"
-    cidr_blocks = ["10.0.0.0/16"]
+    cidr_blocks = ["10.0.0.0/16", data.aws_vpc.default.cidr_block]
   }
 
   egress {

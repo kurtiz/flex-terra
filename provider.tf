@@ -9,6 +9,7 @@ terraform {
 
 provider "aws" {
   region = var.region
+  profile = "flexcube"
   
   # Authentication can be provided using one of these methods:
   # 1. AWS CLI profile (profile = "default")
