@@ -23,6 +23,10 @@ variable "instance_type" {
   default = "t3.medium"
 }
 
+variable "manager-server_instance_type" {
+  default = "t2.micro"
+}
+
 variable "ami_id" {
   description = "Oracle Linux 8 AMI"
   default     = "ami-0cafee481e8a75ee3"

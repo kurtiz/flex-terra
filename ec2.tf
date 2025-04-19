@@ -33,10 +33,10 @@ resource "aws_instance" "db_server" {
 
 resource "aws_instance" "manager_server" {
   ami           = "ami-0df368112825f8d8f"
-  instance_type = "t2.micro"
-  key_name = "flex-key-pair"
-  subnet_id = "subnet-083fa8817040e96b1"
-  vpc_security_group_ids = ["sg-0776af6c059db9142"]
+  instance_type = var.manager-server_instance_type
+  key_name = var.key_name
+  subnet_id = aws_subnet.public_subnet.id
+  vpc_security_group_ids = [aws_security_group.manager_server_sg.id]
   tags = {
     Name = "manager-server"
   }

@@ -31,23 +31,23 @@ resource "aws_route_table_association" "public_rt_assoc" {
   route_table_id = aws_route_table.public_rt.id
 }
 
-data "aws_vpc" "default" {
-  default = true
-}
-
-resource "aws_vpc_peering_connection" "flexcube_vpc_peering" {
-  peer_vpc_id = aws_vpc.flexcube_vpc.id
-  vpc_id      = data.aws_vpc.default.id
-  auto_accept = true
-}
-
-resource "aws_vpc_peering_connection_accepter" "accept_default" {
-  vpc_peering_connection_id = aws_vpc_peering_connection.flexcube_vpc_peering.id
-  auto_accept = true
-}
-
-resource "aws_route" "default_to_flexcube_vpc" {
-  route_table_id = aws_route_table.public_rt.id
-  destination_cidr_block = aws_vpc.flexcube_vpc.cidr_block
-  vpc_peering_connection_id = aws_vpc_peering_connection.flexcube_vpc_peering.id
-}
+# data "aws_vpc" "default" {
+#   default = true
+# }
+#
+# resource "aws_vpc_peering_connection" "flexcube_vpc_peering" {
+#   peer_vpc_id = aws_vpc.flexcube_vpc.id
+#   vpc_id      = data.aws_vpc.default.id
+#   auto_accept = true
+# }
+#
+# resource "aws_vpc_peering_connection_accepter" "accept_default" {
+#   vpc_peering_connection_id = aws_vpc_peering_connection.flexcube_vpc_peering.id
+#   auto_accept = true
+# }
+#
+# resource "aws_route" "default_to_flexcube_vpc" {
+#   route_table_id = aws_route_table.public_rt.id
+#   destination_cidr_block = aws_vpc.flexcube_vpc.cidr_block
+#   vpc_peering_connection_id = aws_vpc_peering_connection.flexcube_vpc_peering.id
+# }
